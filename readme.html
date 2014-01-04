@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Limit Downloads and Virtual Products</title>
+
+<style type="text/css">
+<!--
+a, a:active, a:visited {
+  color: #006666;
+  text-decoration: none
+}
+a:hover {
+    color:#00CC99;
+    text-decoration: underline;
+}
+BODY, P, H1, H2, H3, H4, H5, H6, LI, TD, DD, DT {
+  font-family: Verdana, AvantGarde, Tahoma, Arial, sans-serif;
+  font-size: 10pt;
+  color: black;
+  padding: 0px;
+  margin: 20px;
+}
+H1, H2, H3, H4 {
+  font-weight: bold
+}
+h1 {
+  font-size: 20px;
+}
+h2 {
+  font-size: 16px;
+}
+code {
+  padding-left: 25px;
+}
+ol li, ul li {
+  margin-left: 0;
+}
+ol li ul li, ul li ul li, ol li ol li {
+  margin: 0 auto 5px;
+}
+pre {
+  padding-left: 40px;
+}
+.corefile { color: red; }
+-->
+</style>
+</head>
+
+<body>
+  <h1>Limit Downloads and Virtual Products</h1>
+  <h3>Version 1.1.2 by lat9</h3>
+   <p>Current Support Thread at Zen Cart Forums: <a href="http://www.zen-cart.com/showthread.php?202695-Limit-Quantities-for-Downloads-and-Virtual-Products-Support-Thread" target="_blank">http://www.zen-cart.com/showthread.php?202695-Limit-Quantities-for-Downloads-and-Virtual-Products-Support-Thread</a></p>
+  
+  <h2>Version History:</h2>
+    <ul>
+      <li>v1.0, 2009-12-05, Initial release.</li>
+      <li>v1.1.0, 2012-11-26<ul>
+        <li>Converted this readme to HTML format.</li>
+        <li>The previous version addressed solely downloadable products; added support for virtual products as well.</li>
+        <li>The previous version limited the download to a specific option_id/option_value_id pair.  Starting with v1.1.0, the plugin will limit any downloadable/virtual product in your store to a single customization-instance per cart.</li>
+      </ul></li>
+      <li>v1.1.1, 2013-10-20<ul>
+        <li>BUGFIX: If the initial add-to-cart action used a quantity greater than 1, the addition was incorrectly allowed.</li>
+        <li>Removed extraneous files from the plugin's distribution zip-file.</li>
+      </ul></li>
+      <li>v1.1.2, 2013-10-25<ul>
+        <li>BUGFIX: Gift certificates priced by attributes were incorrectly being limited.</li>
+      </ul></li>
+    </ul>
+
+  <h2>What it does</h2>
+    <p>If your store has downloadable and/or virtual products, it's possible &mdash; depending on your configuration &mdash; for a customer to add multiple copies of the product to their cart. The customer can go through checkout confirmation, paying for the quantity present in their cart &hellip; but when it comes to the download itself, only <strong>one</strong> copy is available for the customer to download.</p>
+    <p>Downloadable/virtual products can fall into three different customization types:</p>
+    <ol>
+      <li>The product is configured with a single attribute, e.g. one that specifies the download filename.  For this type of product, you can use the built-in Zen Cart methods to limit the product to a single instance in a customer's cart.  Use your admin's <em>Catalog-&gt;Categories/Products</em> and set<ul>
+        <li>Product Qty. Minimum to 1</li>
+        <li>Product Qty. Maximum to 1</li>
+        <li>Product Qty. Units to 1</li>
+      </ul></li>
+      <li>The product can be purchased either as a download or as a physical (e.g. printed) item.  For this type of product, you probably want to allow multiple copies of the physical product to be placed into a customer's cart.  Unfortunately, with this configuration the customer can also place multiple copies of the download version of the product in his/her cart &hellip; possibly resulting in charge-back issues for your store.</li>
+      <li>The downloadable/virtual product has multiple configurations, i.e. more than one attribute.  For example, the product might be available in more than one language or in different file formats.  The customer should be able to have different configurations of the product in his/her cart, but limited to a single instance for a specific attribute combination.</li>
+    </ol>
+    <p>This plugin addresses customization types 2 and 3 described above. See it in action at <a href="http://www.latitude9needlearts.com" target="_blank">www.latitude9needlearts.com</a>.</p>
+  
+  <h2>Installation</h2>
+    <p>There are no core-file overwrites in this plugin; you should <strong>always</strong> backup your cart&rsquo;s database and files prior to making any changes.</p>
+    <ol>
+      <li>Copy the catalog files to your cart, after renaming the YOUR_TEMPLATE directories to match your store's customer template name:<ol>
+        <li>/includes/extra_cart_actions/limit_downloads.php</li>
+        <li>/includes/languages/english/extra_definitions/YOUR_TEMPLATE/limit_downloads.php</li>
+      </ol></li>
+    </ol>
+</body>
+</html>
